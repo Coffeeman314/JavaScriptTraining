@@ -22,13 +22,11 @@ const roundToHundred = Math.round(preRound) * 100;
 console.log(roundToHundred);
 
 function testNum(sumFloorFood) {
-  
   if (sumFloorFood % 2 === 0) {
     return "Yep, it's even";
   } else {
     return "Emm, nope...";
   }
-  
 }
 console.log(testNum(sumFloorFood));
 
@@ -50,8 +48,8 @@ console.log(needToPay.toFixed(2));
 const profit = cost - discountValue;
 console.log(profit.toFixed(2));
 
-let container=document.querySelector("#container");
-container.innerHTML=`
+let container = document.querySelector("#container");
+container.innerHTML = `
 <p>Maximal price: ${maxPrice};</p>
 <p>Minimal price: ${minPrice};</p>
 <p>Summary price: ${sumPrices};</p>
