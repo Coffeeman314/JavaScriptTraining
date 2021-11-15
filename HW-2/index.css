@@ -1,0 +1,18 @@
+body {
+  background-color: gainsboro;
+  font-family: Arial, Helvetica, sans-serif;
+  color: navy;
+  
+}
+
+#error {
+  color: rgb(136, 0, 0);
+}
+
+#form input {
+  margin-bottom: 7px;
+}
+
+#form button {
+  margin-bottom: 5px;
+}
