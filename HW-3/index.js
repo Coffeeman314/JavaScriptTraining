@@ -6,17 +6,21 @@ expForm.addEventListener("submit", (event) => {
   expAnswer.innerText = "";
   const baseNumber = event.target[0].value;
   const exponentNumber = event.target[1].value;
-  expAnswer.innerText = `Відповідь: ${getExpPower(
-    baseNumber,
-    exponentNumber
-  )}.`;
+  if (exponentNumber >= 0) {
+    expAnswer.innerText = `Відповідь: ${getExpPower(baseNumber, exponentNumber)}.`;
+  } else {
+    expAnswer.innerText = `Вводити тільки додатні степені і 0.`
+  }
+  
 });
 
 const getExpPower = (baseNumber, exponentNumber) => {
-  for (let i = 1; i < exponentNumber; i++) {
-    baseNumber *= baseNumber;
-  }
-  return baseNumber;
+  let resultExp = 1;
+  for (let i = 0; i < exponentNumber; i++) {
+    resultExp *= baseNumber;
+}
+
+return resultExp;
 };
 
 // 02
@@ -48,7 +52,6 @@ const getRandomInt = (min, max) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
-console.log(getRandomInt(1, 99));
 
 // 04
 const countLetterForm = document.getElementById("countLetterForm");
