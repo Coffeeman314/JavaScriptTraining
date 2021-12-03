@@ -7,20 +7,21 @@ expForm.addEventListener("submit", (event) => {
   const baseNumber = event.target[0].value;
   const exponentNumber = event.target[1].value;
   if (exponentNumber >= 0) {
-    expAnswer.innerText = `Відповідь: ${getExpPower(baseNumber, exponentNumber)}.`;
+    expAnswer.innerText = `Відповідь: ${getExpPower(
+      baseNumber,
+      exponentNumber
+    )}.`;
   } else {
-    expAnswer.innerText = `Вводити тільки додатні степені і 0.`
+    expAnswer.innerText = `Вводити тільки додатні степені і 0.`;
   }
-  
 });
 
 const getExpPower = (baseNumber, exponentNumber) => {
   let resultExp = 1;
   for (let i = 0; i < exponentNumber; i++) {
     resultExp *= baseNumber;
-}
-
-return resultExp;
+  }
+  return resultExp;
 };
 
 // 02
@@ -64,7 +65,10 @@ countLetterForm.addEventListener("submit", (event) => {
   const someString = event.target[0].value;
   const someLetter = event.target[1].value;
   if (someLetter.length === 1) {
-    countLetterOutput.innerText = `Відповідь: ${countLetter(someString,someLetter)}.`;
+    countLetterOutput.innerText = `Відповідь: ${countLetter(
+      someString,
+      someLetter
+    )}.`;
   } else {
     countLetterError.innerText = "idiot";
   }
