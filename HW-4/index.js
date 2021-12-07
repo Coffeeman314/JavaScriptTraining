@@ -35,11 +35,11 @@ const notes = () => {
 };
 console.log(notes());
 
-const getNote = () => Math.floor(Math.random() * (5 - 3 + 1)) + 3;
+
 const getMagistersNotes = () => {
   const paresNotes = [];
   for (let i = 0; i < magisters().length; i++) {
-    const addParesNotes = [...magisters()[i], getNote()];
+    const addParesNotes = [...magisters()[i], Math.floor(Math.random() * (5)) + 1];
     paresNotes.push(addParesNotes);
   }
   return paresNotes;
