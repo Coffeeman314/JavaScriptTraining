@@ -156,8 +156,6 @@ const deleteFunction = (randomString) => {
     ];
     if (!newArr.includes(randomStringOperator[i])) {
       text += randomString
-        .replace(/\s/g, "")
-        .split("")
         .includes(randomStringOperator[i])
         ? randomStringOperator[i]
         : randomStringOperator[i].toUpperCase();
