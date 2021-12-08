@@ -137,3 +137,43 @@ const isPalindrome = (text) => {
   const reverseWord = checkWord.split("").reverse().join("");
   return checkWord === reverseWord;
 };
+
+// 07
+const deleteDuplicatesForm = document.getElementById("deleteDuplicatesForm");
+const stringInputAnswer = document.getElementById("stringInputAnswer");
+const stringError = document.getElementById("stringError");
+
+const deleteFunction = (randomString) => {
+  const randomStringOperator = randomString
+    .replace(/\s/g, "")
+    .toLowerCase()
+    .split("");
+  let text = "";
+  for (let i = 0; i < randomStringOperator.length; i++) {
+    const newArr = [
+      ...randomStringOperator.slice(0, i),
+      ...randomStringOperator.slice(i + 1),
+    ];
+    if (!newArr.includes(randomStringOperator[i])) {
+      text += randomString
+        .replace(/\s/g, "")
+        .split("")
+        .includes(randomStringOperator[i])
+        ? randomStringOperator[i]
+        : randomStringOperator[i].toUpperCase();
+    }
+  }
+  return text;
+};
+
+deleteDuplicatesForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  stringInputAnswer.innerText = "";
+  stringError.innerText = "";
+  const randomString = event.target[0].value;
+  if (randomString.length > 0) {
+    stringInputAnswer.innerText = deleteFunction(randomString);
+  } else {
+    stringError.innerText = "Give me some letters, please!";
+  }
+});
