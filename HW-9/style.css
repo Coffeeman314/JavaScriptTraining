@@ -1,0 +1,17 @@
+h2 {
+  padding-left: 100px;
+  color: rgb(194, 27, 216);
+}
+
+body {
+  background-color: black;
+}
+
+.mainBlock {
+  padding-left: 75px;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
