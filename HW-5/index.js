@@ -1,15 +1,10 @@
 
 // 1. Get array of random numbers
-const getRandomArray = (length, min, max) => {
-  let randomArr = [];
-  for (let i = 0; i < length; i++) {
-    const getRandom = (min, max) =>
-      Math.floor(Math.random() * (max - min + 1)) + min;
-    randomArr.push(getRandom(min, max));
-  }
-  return randomArr;
-};
-console.log('1. Random array: ', getRandomArray(10, 1, 99));
+const numArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+const randomNumArr = numArr.map(
+  (item) => item + (Math.floor(Math.random() * 99) + 1)
+);
+console.log("1. Random array: ", randomNumArr);
 
 // 2. getAverage function
 const numbers = [2, 5, 4, 3, 6, 7, 4];
