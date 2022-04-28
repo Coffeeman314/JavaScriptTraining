@@ -15,7 +15,7 @@ const btn = document.getElementById('submit')
 
 frm.addEventListener('submit', (event) => {
   event.preventDefault();
-  console.log(event.target)
+  console.log(event)
 })
 
 ///////////////PEOPLE////////////////
