@@ -1,82 +1,121 @@
 const BASE = "https://swapi.dev/api";
+const selectorElement = document.getElementById("chapter-select");
+const chapterNameContainer = document.getElementById("chapterName");
+const selectedValue = selectorElement.options;
+let defaultButtonValue = "people";
+let pageValue = 1;
+let contentArr = [];
+const prevPageButton = document.getElementById("prev");
+const nextPageButton = document.getElementById("next");
 
-// const getEpisodeName = document.getElementById('chapter-select');
-// const getInfoClick = document.getElementById('submit')
-// getEpisodeNumber.addEventListener('change', (event) =>{
-//   getPeopleLinks(event.target.value);
+const getBaseLinks = (episode) => {
+  return axios.get(`${BASE}/films/${episode}`).then((res) => {
+    return res.data;
+  });
+};
 
-// }) 
+const firstRender = () => {
+  renderPage();
+  renderChapterName("A New Hope");
+};
 
-// getInfoClick.addEventListener('click', (event) => {
-//   getPeopleLinks()
-// })
-const frm = document.getElementById('getEpisodeName')
-const btn = document.getElementById('submit')
-
-frm.addEventListener('submit', (event) => {
+selectorElement.addEventListener("change", (event) => {
   event.preventDefault();
-  console.log(event)
-})
+  let chapterNum = selectedValue[selectedValue.selectedIndex];
+  console.log("switch:", chapterNum.value);
+  renderPage(chapterNum.value);
+  renderChapterName(chapterNum.text);
+});
 
-///////////////PEOPLE////////////////
-const getPeopleLinks = (episodeNum) => {
-  console.log(`${BASE}/films/${episodeNum || '1'}`)
-  return axios.get(`${BASE}/films/${episodeNum || '1'}`).then((res) => {
+const contentButtons = document
+  .querySelector(".switchButtons")
+  .addEventListener("click", (event) => {
+    event.preventDefault();
+    if (event.target.tagName !== "BUTTON") {
+      event.stopPropagation();
+    } else {
+      defaultButtonValue = event.target.value;
+      console.log(event);
+      switch (event.target.value === "people") {
+        case "planets":
+          return renderPage();
+        default:
+          return renderPage();
+      }
+    }
+  });
 
-    return console.log(res.data.characters);
+const getDataFromAPI = (episode = "1") => {
+  return getBaseLinks(episode).then((res) => {
+    if (defaultButtonValue === "people") {
+      return res.characters;
+    } else if (defaultButtonValue === "planets") {
+      return res.planets;
+    } else {
+      return res.characters;
+    }
   });
 };
 
-const renderPeople = () => {
-    getPeopleLinks().then((arg) => {
+const renderChapterName = (chapterName) => {
+  chapterNameContainer.innerHTML = `<h6>${chapterName}</h6>`;
+};
+
+
+const renderPage = (episode) => {
+  
+  getDataFromAPI(episode).then((arg) => {
     return arg.forEach((link) => {
-      const peopleContainer = document.querySelector(".pageData");
-      peopleContainer.innerHTML = "";
-      const personElement = document.createElement("div");
-      personElement.className = "person";
+      const pageContainer = document.querySelector(".pageData");
+      pageContainer.innerHTML = "";
+      const pageElement = document.createElement("div");
+      pageElement.className = "pageElement";
       axios.get(link).then((res) => {
-        personElement.innerHTML = `
-      <div class="avatar"></div>
-        <span class = "char-name">Name: ${res.data.name}</span>
-        <span class = "char-date">Year of birth: ${res.data.birth_year}</span>
-        <span class = "char-gender">Gender: ${res.data.gender}</span>
-        `;
-        return peopleContainer.append(personElement);
+        defaultButtonValue === "people"
+          ? (pageElement.innerHTML = `
+            
+            <div class="text">
+            <span></span>Name: ${res.data.name}</span>
+            <span>Year of birth: ${res.data.birth_year}</span>
+            <span>Gender: ${res.data.gender}</span>
+            </div>`)
+          : (pageElement.innerHTML = `
+            
+            <div class="text">
+            <span>Name: ${res.data.name}</span>
+            <span>Diameter: ${res.data.diameter}</span>
+            <span>Population: ${res.data.population}</span>
+            </div>`);
+        return pageContainer.append(pageElement);
       });
     });
-  });
-}
-
-///////////////PLANETS////////////////
-const getPlanetsLinks = () => {
-  return axios.get(BASE + "/films/5").then((res) => {
-    return res.data.planets;
   });
 };
-const renderPlanets = () => {
-  getPlanetsLinks().then((arg) => {
-    return arg.forEach((link) => {
-      const planetsContainer = document.querySelector(".pageData");
-      planetsContainer.innerHTML = "";
-      const planetElement = document.createElement("div");
-      planetElement.className = "planet";
-      axios.get(link).then((res) => {
-        planetElement.innerHTML = `
-      <div class="avatar"></div>
-        <span class = "char-name">Name: ${res.data.name}</span>
-        <span class = "char-date">Diameter: ${res.data.diameter}</span>
-        <span class = "char-gender">Population: ${res.data.population}</span>
-        `;
-        return planetsContainer.append(planetElement);
-      });
-    });
-  });
-}
 
 
+prevPageButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (pageValue >= 2) {
+    let currPage = --pageValue;
+    return contentSplicer(currPage);
+  } else {
+    return event.stopPropagation();
+  }
+});
+
+nextPageButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (contentArr.length > 0) {
+    let currPage = ++pageValue;
+    return contentSplicer(currPage);
+  } else if (contentArr.length = 0) {
+      return event.stopPropagation();
+  } else {
+    return event.stopPropagation();
+  }
+});
 
 
+firstRender();
 
-
-
-
+//<div class="avatar"></div>

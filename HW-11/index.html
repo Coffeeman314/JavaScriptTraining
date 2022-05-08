@@ -23,41 +23,28 @@
               <option value="5">Attack of the Clones</option>
               <option value="6">Revenge of the Sith</option>
             </select>
-          
-          <button id="submit" type="submit">Get info!</button>
         </form>
         </div>
       <div class="header-right">
-        <button id="translate">wookie!</button>
+        <button id="translator">Wookie!</button>
       </div>
     </header>
 
     <div class="container">
       <div class="container-header">
-        <h6>Episode 1</h6>
-        <h4>Planets | Characters</h4>
+        <div id="chapterName"></div>
+        <div class="switchButtons">
+          <button value="people">People</button>
+          <button value="planets">Planets</button>
+        </div>
       </div>
       <div class="container-body">
         <div class="pageData">
-          <!-- <div class="person">
-            <div class="avatar"></div>
-            <span class = "char-name">Name: Person Name</span>
-            <span class = "char-date">Year of birth: 12.12.12</span>
-            <span class = "char-gender">Gender: Robot</span>
-          </div>
-          <div class="person">2</div>
-          <div class="person">3</div>
-          <div class="person">4</div>
-          <div class="person">5</div>
-          <div class="person">6</div>
-          <div class="person">7</div>
-          <div class="person">8</div>
-          <div class="person">9</div>
-          <div class="person">10</div>
-          <div class="person">11</div> -->
         </div>
         <div class="page-number">
-          <span>Prev | 2 | Next</span>
+          <button id="prev" >prev</button>
+          <div class="currentPage"></div>
+          <button id="next" >next</button>
         </div>
       </div>
     </div>

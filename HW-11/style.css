@@ -81,24 +81,27 @@ header {
   align-items: center;
 }
 
-.header-right button {
+.header-right button,
+.switchButtons button,
+.page-number button {
   border-radius: 3px;
   border: none;
   color: #000;
   background-color: #ddc91b;
-  width: 60px;
-  margin-right: 10px;
+  width: 70px;
+  height: 30px;
 }
 
-.header-right button:hover {
-  border-radius: 3px;
-  border: none;
-  color: #000;
-  background-color: #e1d24c;
-  width: 60px;
-  margin-right: 10px;
+.header-right button:hover,
+.switchButtons button:hover {
+  background-color: #d5c42e;
 }
 
+.header-right button:focus,
+.switchButtons button:focus {
+  background-color: #d5a82e;
+  /* pointer-events: none; */
+}
 
 /* /////////////////////////////////////////////////////// */
 
@@ -110,6 +113,7 @@ header {
   align-items: center;
 }
 
+
 .container-header {
   display: flex;
   flex-direction: column;
@@ -119,56 +123,77 @@ header {
   margin-top: 80px;
 }
 
-h4 {
-  padding-top: 10px;
+#chapterName {
+  height: 75px;
+}
+
+.switchButtons,
+.page-number {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.switchButtons button{
+  height: 25px;
+  width: 100px;
 }
 
 .container-body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  
 }
 
 .pageData {
-  width: 1306px;
+  width: 1100px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  /* align-items: ; */
   gap: 30px;
 }
 
-.person, .planet{
-  background-color: #050d3c;
-  height: 400px;
-  width: 300px;
-  /* border: 2px solid rgb(49, 49, 49); */
+.pageElement {
+  background-color: 070915;
+  /* height: 350px;
+  width: 250px; */
+
+  height: 75px;
+  width: 174px;
+
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-
-
-
+  justify-content: flex-start;
+  gap: 10px;
 }
 
 .avatar {
   background-color: rgb(81, 81, 81);
-  width: 250px;
-  height: 300px;
+  width: 200px;
+  height: 250px;
 }
 
-.page-number {
-  padding-top: 25px;
+.text {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 3px;
+}
+
+.currentPage {
+  width: 30px;
+  color: #d5c42e;
+}
+/* 
+.page-number {
+  padding-top: 25px;
+  align-items: center;
   width: 100%;
   height: 80px;
-}
+} */
 
 /* /////////////////////////////////////////////////////// */
 
