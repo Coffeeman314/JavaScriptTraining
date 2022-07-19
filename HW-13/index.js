@@ -19,10 +19,13 @@ const getRandomChinese = (n) => {
   });
 };
 
-getRandomChinese(1)
+getRandomChinese(4)
   .then((res) => {
     console.log(res);
   })
   .catch((reject) => {
     console.log("wrong num");
   });
+
+
+export {getRandomChinese};

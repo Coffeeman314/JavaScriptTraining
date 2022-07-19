@@ -27,3 +27,4 @@ form.addEventListener("submit", (event) => {
   }
 });
 
+export { calculator , form };

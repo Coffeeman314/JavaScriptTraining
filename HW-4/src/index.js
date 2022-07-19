@@ -47,3 +47,7 @@ const getMagistersNotes = () => {
   return paresNotes;
 };
 console.log(getMagistersNotes());
+
+
+
+

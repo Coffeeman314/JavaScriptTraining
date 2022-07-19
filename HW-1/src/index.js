@@ -63,3 +63,5 @@ container.innerHTML = `
 <p>You pay me ${needToPay.toFixed(2)}$,<p>
 <p>Than my profit will be only ${profit.toFixed(2)}$. Isn't it creepy?<p>
 `;
+
+export {  };

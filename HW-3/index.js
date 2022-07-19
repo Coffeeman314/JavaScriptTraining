@@ -54,6 +54,10 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+////export////
+export { getRandomInt };
+
+
 // 04
 const countLetterForm = document.getElementById("countLetterForm");
 const countLetterOutput = document.getElementById("countLetterOutput");
