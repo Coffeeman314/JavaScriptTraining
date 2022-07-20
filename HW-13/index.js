@@ -26,6 +26,3 @@ getRandomChinese(4)
   .catch((reject) => {
     console.log("wrong num");
   });
-
-
-export {getRandomChinese};
